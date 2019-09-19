@@ -1,0 +1,4 @@
+<input class='inputA' placeholder="请输入用户名" bindinput="checkName" />
+<input class='inputA' placeholder="请输入密码" password='true' bindinput="checkPwd" />
+<button wx:if="{{!isLogin}}" type='primary' bindtap='register'>注册</button>
+<button type='primary' bindtap='login'>登陆</button>

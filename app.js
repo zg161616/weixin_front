@@ -9,21 +9,21 @@ App({
     // 登录
     wx.login({
       success: res => {
-        if (res.code) {
-          wx.request({
-            url: 'https://cwc.easy.echosite.cn',
-            data: { code: res.code },
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-              console.log(res);
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          })
-        }
+        // if (res.code) {
+        //   wx.request({
+        //     url: 'https://cwc.easy.echosite.cn',
+        //     data: { code: res.code },
+        //     header: {
+        //       'content-type': 'application/json' // 默认值
+        //     },
+        //     success: function (res) {
+        //       console.log(res);
+        //     },
+        //     fail: function (res) {
+        //       console.log(res);
+        //     }
+        //   })
+        // }
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
@@ -50,6 +50,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
   }
 })
