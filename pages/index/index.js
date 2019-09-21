@@ -15,6 +15,8 @@ Page({
     },
     array:[{message:'001'},{message:'002'}]
   },
+  onPullDownRefresh:function(){
+  },
   checkUserName:function(){
     var util = require("../../utils/util.js");
     var number = util.formatTime(Date.now());
@@ -99,5 +101,8 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  onReachBottom:function(){
+    console.log("reach")
+  },
 })

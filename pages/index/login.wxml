@@ -2,3 +2,6 @@
 <input class='inputA' placeholder="请输入密码" password='true' bindinput="checkPwd" />
 <button wx:if="{{!isLogin}}" type='primary' bindtap='register'>注册</button>
 <button type='primary' bindtap='login'>登陆</button>
+<button type="primary" bindtap="scanf">扫描</button>
+<button type="primary" bindgetuserinfo="showUserInfo" open-type="getUserInfo">授权</button>
+<button type="default" bindtap="tap">预览文档</button>

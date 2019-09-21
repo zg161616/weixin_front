@@ -15,7 +15,16 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const formatHour = time =>{
+  var time = time / 1000;
+  var hour = Math.floor(time/(60*60))+"时";
+  var minutes = Math.floor(time/60)+"分";
+  var seconds = Math.floor(time%60)+"秒";
+  return [hour,minutes,seconds].join("")
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatNumber:formatNumber
+  formatNumber:formatNumber,
+  formatHour: formatHour
 }
