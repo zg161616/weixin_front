@@ -12,4 +12,19 @@
   </view>
   <button bindtap="flush">刷新页面</button>
     <button bindtap="checkUserName">跳转页面</button>
+<image mode="scaleToFill" src="../img/logo.png" catchtouchstart="touchStart"></image>
+<view
+  id="outer"
+  bind:touchstart="handleTap1"
+  capture-bind:touchstart="handleTap2"
+>
+  outer view
+  <view
+    id="inner"
+    bind:touchstart="handleTap3"
+    capture-bind:touchstart="handleTap4"
+  >
+    inner view
+  </view>
+</view>
 </view>

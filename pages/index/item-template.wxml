@@ -1,0 +1,6 @@
+<template name="msgItem">
+  <view>
+    <text> {{item.index}}: {{item.msg}} </text>
+    <text> Time: {{item.time}} </text>
+  </view>
+</template>

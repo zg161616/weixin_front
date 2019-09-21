@@ -1,0 +1,19 @@
+view{ 
+  color: blue
+}
+
+.ele{ 
+  color: red
+}
+
+#ele{ 
+  color: pink
+}
+
+view#ele{ 
+  color: orange
+}
+
+view.ele{ 
+  color: green
+}

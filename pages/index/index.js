@@ -8,6 +8,11 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     length:5,
+    item: {
+      index: 0,
+      msg: 'this is a template',
+      time: '2016-06-18'
+    },
     array:[{message:'001'},{message:'002'}]
   },
   checkUserName:function(){
@@ -29,9 +34,23 @@ Page({
       url: '/pages/index/home',
     })
   },
+  handleTap: function (evt) {
+    console.log(evt)
+  },
+  touchStart(){
+    console.log("touchStart")
+  },
   onLoad: function () {
     console.log("load")
-
+    wx.getSetting({
+      success(res) {
+        res.authSetting = {
+          "scope.userInfo": true,
+          "scope.userLocation": true
+        }
+        console.log(res.authSetting)
+      }
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -58,6 +77,20 @@ Page({
         }
       })
     }
+  },
+  handleTap1: function (e) {
+    console.log(e)
+    console.log("handleTap1")
+  },
+  handleTap2: function (e) {
+    console.log(e)
+    console.log("handleTap2")
+  },
+  handleTap3: function (e) {
+    console.log("handleTap3")
+  },
+  handleTap4: function (e) {
+    console.log("handleTap4")
   },
   getUserInfo: function(e) {
     console.log(e)

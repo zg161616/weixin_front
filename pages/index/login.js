@@ -63,6 +63,7 @@ Page({
     }
   })
   },
+
   checkName:function(e){
       this.data.inputName = e.detail.value
   },
