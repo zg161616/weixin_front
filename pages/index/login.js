@@ -20,7 +20,6 @@ Page({
             url: 'https://cwc.easy.echosite.cn/register',
             data: { name: this.data.inputName, pwd: this.data.inputPwd, code: res.code },
             success: function (res) {
-              console.log("SESSIONID已设置")
               wx.setStorageSync("SESSIONID", res.data.session_key)
               wx.setStorageSync("EXPIREDTIME", +new Date())
               if(res.data.code==0){
@@ -43,8 +42,6 @@ Page({
         }
       }
     })
-  
-
   },
   login: function(){
   wx.request({
@@ -78,8 +75,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     var time = wx.getStorageSync("EXPIREDTIME")
     var session_key = wx.getStorageSync("SESSIONID")
+    if(session_key==""){
+      wx.login({
+        success:res =>{
+          if(res.code){
+            wx.request({
+              url: 'https://cwc.easy.echosite.cn/updateSessionKey',
+              data:{code:res.code},
+              success:function(res){
+                wx.setStorageSync("SESSIONID", res.data.session_key)
+                wx.setStorageSync("EXPIREDTIME", +new Date())
+              },
+              complete:function(){
+                console.log("sessionId初始化")
+                that.onLoad()
+              }
+            })
+          }
+        }
+      })
+    }
     var util = require("../../utils/util.js")
     if(time==""){
       time = +new Date();
@@ -97,7 +115,6 @@ Page({
               data : {code:res.code},
               success:function(res){
                 var data = res.data
-                console.log(data)
                   if(res.data.update){
                     console.log("SESSIONID已更新,ID:"+data.session_key)
                     wx.setStorageSync('EXPIREDTIME', +new Date())

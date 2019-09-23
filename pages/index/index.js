@@ -43,7 +43,6 @@ Page({
     console.log("touchStart")
   },
   onLoad: function () {
-    console.log("load")
     wx.getSetting({
       success(res) {
         res.authSetting = {
