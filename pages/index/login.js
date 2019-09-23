@@ -1,14 +1,34 @@
 const app = getApp()
+const ctx = wx.createCanvasContext('myCanvas')
+var info = wx.getSystemInfoSync()
+console.log("小程序基础库版本号为：" + info.SDKVersion)
+ function getRandomColor() {
+  let rgb = []
+  for (let i = 0; i < 3; ++i) {
+    let color = Math.floor(Math.random() * 256).toString(16)
+    color = color.length == 1 ? '0' + color : color
+    rgb.push(color)
+  }
+  return '#' + rgb.join('')
+}
+
 Page({
   /**
    * 页面的初始数据
    */
+
+  inputValue:"",
+  videoContext:"",
   data: {
     isLogin:false,
     inputName:null,
     inputPwd:null,
+    src:null,
+    webSrc: encodeURI("https://cwc.easy.echosite.cn")
   },
+  
   register:function(){
+    
     var that = this
     if (this.data.inputName == null && this.data.inputPwd == null) {
       return;
@@ -74,7 +94,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options) {
     var that = this
     var time = wx.getStorageSync("EXPIREDTIME")
     var session_key = wx.getStorageSync("SESSIONID")
@@ -142,7 +162,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.videoContext = wx.createVideoContext("myVideo", this)
+    ctx.setFillStyle('red')
+    ctx.fillRect(10, 10, 150, 75)
+    ctx.draw()
   },
 
   /**
@@ -199,20 +222,55 @@ Page({
   showUserInfo:function(e){
     console.log(e.detail.rawData)
   },
-  tap:function(){
+  tap(){
     wx.getNetworkType({
       success: function(res) {
         if(res.networkType=="wifi"){
-          wx.downloadFile({
-            url:'',
+       const downLoadTask =  wx.downloadFile({
+            url:'https://cwc.easy.echosite.cn/readFile',
             success:function(res){
+              console.log(res)
               wx.openDocument({
                 filePath: res.tempFilePath,
               })
-            }
+         
+            },
+        
+          })
+          downLoadTask.onProgressUpdate((res)=>{
+            console.log("下载进度"+res.progress)
+            console.log("已经下载的数据长度"+res.totalBytesWritten)
+            console.log("预期需要下载的数据总长度"+res.totalBytesExpectedToWrite)
           })
         }
       },
     })
-  }
+  },
+   bindButtonTap: function() {
+    var that = this
+   const video = wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: ['front','back'],
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          src: res.tempFilePath
+        })
+      }
+    })
+  },
+  timeUpdate:function(res){
+    console.log(res)
+  },
+  bindInputBlur: function (e) { 
+    this.inputValue = e.detail.value
+  },
+  bindSendDanmu: function () {
+    this.videoContext.sendDanmu({
+      text: this.inputValue,
+      color:getRandomColor()
+          })
+  },
+
 })

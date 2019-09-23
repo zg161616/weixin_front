@@ -1,7 +1,15 @@
+<web-view src="https://blog.csdn.net/baozhuona/article/details/76100535"></web-view>
 <input class='inputA' placeholder="请输入用户名" bindinput="checkName" />
 <input class='inputA' placeholder="请输入密码" password='true' bindinput="checkPwd" />
 <button wx:if="{{!isLogin}}" type='primary' bindtap='register'>注册</button>
-<button type='primary' bindtap='login'>登陆</button>
+<button type='primry' bindtap='login'>登陆</button>
 <button type="primary" bindtap="scanf">扫描</button>
 <button type="primary" bindgetuserinfo="showUserInfo" open-type="getUserInfo">授权</button>
 <button type="default" bindtap="tap">预览文档</button>
+<video src="{{src}}" controls="true" enable-progress-gesture="true"  id="myVideo" enable-danmu="true"></video>
+  <view class="btn-area">
+    <button bindtap="bindButtonTap">获取视频</button>
+  </view>
+      <input bindblur="bindInputBlur"/>
+    <button bindtap="bindSendDanmu">发送弹幕</button>
+<canvas canvas-id="myCanvas"></canvas>

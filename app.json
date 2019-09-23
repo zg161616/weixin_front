@@ -4,7 +4,8 @@
     "pages/index/index",
         "pages/template/index",
     "pages/logs/logs",
-    "pages/index/home"
+    "pages/index/home",
+    "pages/index/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",
