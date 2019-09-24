@@ -1,0 +1,5 @@
+<text>我是组件中的数据</text>
+
+<view class='hahaha'>
+  <slot />
+</view>

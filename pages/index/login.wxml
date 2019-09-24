@@ -1,4 +1,3 @@
-<web-view src="https://blog.csdn.net/baozhuona/article/details/76100535"></web-view>
 <input class='inputA' placeholder="请输入用户名" bindinput="checkName" />
 <input class='inputA' placeholder="请输入密码" password='true' bindinput="checkPwd" />
 <button wx:if="{{!isLogin}}" type='primary' bindtap='register'>注册</button>
@@ -13,3 +12,7 @@
       <input bindblur="bindInputBlur"/>
     <button bindtap="bindSendDanmu">发送弹幕</button>
 <canvas canvas-id="myCanvas"></canvas>
+  <navigator url="/pages/index/webView" hover-class="navigator-hover" open-type="navigateTo">跳转到新页面</navigator>
+  <navigator url="/pages/index/index" open-type="reLaunch">首页</navigator>
+    <navigator url="/pages/index/webView" open-type="redirect">redirect</navigator>
+    <navigator url="/pages/index/index" open-type="switchTab">切换TAB</navigator>

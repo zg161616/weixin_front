@@ -1,2 +1,3 @@
 <!--pages/index/webView.wxml-->
 <text>pages/index/webView.wxml</text>
+<navigator open-open-type="navigateBack" url="/pages/index/login">返回</navigator>

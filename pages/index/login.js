@@ -11,12 +11,11 @@ console.log("小程序基础库版本号为：" + info.SDKVersion)
   }
   return '#' + rgb.join('')
 }
-
 Page({
+  
   /**
    * 页面的初始数据
    */
-
   inputValue:"",
   videoContext:"",
   data: {
@@ -95,6 +94,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log("load")
     var that = this
     var time = wx.getStorageSync("EXPIREDTIME")
     var session_key = wx.getStorageSync("SESSIONID")
@@ -171,22 +171,42 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    
+  onShow: function () { 
+    console.log("show")
+    wx.connectSocket({
+      url: 'https://cwc.easy.echosite.cn/socketTest',
+      success(res) {
+        console.log("连接成功");
+        console.log(JSON.stringify(res))
+      },
+      fail(res) {
+        console.log("连接失败" + res)
+      }
+    })
+    wx.onSocketOpen(function (res) {
+      console.log("WebSocket连接已经打开")
+    })
+    wx.onSocketClose(function (res) {
+      console.log("WebSocket连接已经关闭")
+    })
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！')
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+    console.log("hide")
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+    console.log("unload")
+
   },
 
   /**
@@ -273,4 +293,22 @@ Page({
           })
   },
 
+})  
+Component({
+  properties: {
+    // 这里定义了innerText属性，属性值可以在组件使用时指定
+    innerText: {
+      type: String,
+      value: 'sss',
+    },
+  },
+  data: {
+    // 这里是一些组件内部数据
+    someData: {}
+  },
+  methods: {
+    // 这里是一个自定义方法
+    customMethod: function () { }
+  }
 })
+

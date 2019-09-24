@@ -1,11 +1,13 @@
 {
   "pages": [
-    "pages/index/login",
     "pages/index/index",
+    "pages/index/login",
         "pages/template/index",
     "pages/logs/logs",
     "pages/index/home",
-    "pages/index/webView"
+    "pages/index/webView",
+    "pages/index/components",
+    "pages/components/pop"
   ],
   "window": {
     "backgroundTextStyle": "light",

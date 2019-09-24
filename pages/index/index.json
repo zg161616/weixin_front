@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+        "pop": "/pages/components/pop"
+  },
     "enablePullDownRefresh": true
 }

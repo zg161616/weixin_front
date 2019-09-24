@@ -104,4 +104,10 @@ Page({
   onReachBottom:function(){
     console.log("reach")
   },
+  showPop(){
+      this.pop.showPop()
+  },
+  onReady(){
+    this.pop = this.selectComponent("#phone")
+  }
 })

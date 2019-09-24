@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
-  "enablePullDownRefresh": true 
-
-}
+  "usingComponents": {
+        "component-tag-name": "/pages/index/webView"
+  },
+  "enablePullDownRefresh": true ,
+    "component": true
+} 
