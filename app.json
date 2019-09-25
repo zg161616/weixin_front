@@ -22,19 +22,21 @@
     }
   },
   "tabBar": {
-    "list": [
-      {
-        "text": "Tab1",
-        "pagePath": "pages/index/index"
-      },
-      {
-        "text": "Tab1",
-        "pagePath": "pages/index/index"
-      },
-      {
-        "text": "Tab1",
-        "pagePath": "pages/index/index"
-      }
-    ]
+    "custom":true,
+    
+ "list": [
+  {
+    "text": "Tab1",
+    "pagePath": "pages/index/index"
+  },
+  {
+    "text": "Tab2",
+    "pagePath": "pages/index/login"
+  },
+  {
+    "text": "Tab3",
+    "pagePath": "pages/index/webView"
   }
+]
+  },
 }

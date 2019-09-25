@@ -51,7 +51,6 @@ Page({
     console.log("touchStart")
   },
   onLoad: function () {
-    console.log("load00")
    var date = util.dateToStr(new Date())
    this.setData({
      date:date
@@ -244,24 +243,4 @@ test(){
   bindTapView(res){
     console.log(res)
   },
-  initTabObserver() {
-    this.tabObserver = wx.createIntersectionObserver(this)
-    this.tabObserver
-      // 相对于页面可视区
-      .relativeToViewport()
-      // 相对于某一个元素
-      .observe('.slider', (res) => {
-        console.info(res)
-        const visible = res.intersectionRatio > 0
-        this.setData({ tabFixed: !visible })
-      })
-  },
-  onLoad(){
-    console.log("load01")
-    this.initTabObserver()
-  },
-
-    onUnload() {
-    this.tabObserver.disconnect()
-  }
 })

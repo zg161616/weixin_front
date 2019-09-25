@@ -1,0 +1,7 @@
+<view class = "tabbar">
+<block wx:for = "{{list}}" wx:key="*this">
+<view class = "tabbar-item">
+<navigator open-type="switchTab" url="{{item.pagePath}}">{{name}}{{item.text}}</navigator>
+</view>
+</block>
+</view>
