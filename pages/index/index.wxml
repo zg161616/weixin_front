@@ -28,4 +28,67 @@
   </view>
 </view>
 </view>
-<pop id="phone"/>
+<button bindtap="showPop">开关组件</button>
+<pop id="phone"   title="none" bind:error="error" bind:success="success"/>
+  <button bindtap="showModal" >showModal</button>
+    <button bindtap="showSheet" >showSheet</button>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+    当前选择：{{array[index]}}
+    </view>
+</picker>
+<view class="section">
+    <view class="section__title">多列选择器</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+        </view>
+    </picker>
+</view>
+<view class="section">
+<view class="section__title">时间选择器</view>
+    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange" bindcancel="cancel">
+        <view class="picker">
+当前选择: {{time}}
+        </view>
+    </picker>
+</view>
+<view class="section">
+<view class="section__title">日期选择器</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+当前选择: {{date}}
+        </view>
+    </picker>
+</view>
+<view class="section">
+<view class="section__title">省市区选择器</view>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+    </picker>
+</view>
+<button id="owner">owner</button>
+<wxs src="test.wxs" module="wxs"/>
+<view  class="owner" bindtap="{{wxs.tapName}}">click me!</view>
+<view mark:myMark="last" bindtap="bindTapView" id="tapView" data-dsad="zzz">
+  <button mark:anotherMark="leaf" bindtap="bindTapButton" id="tapButton">按钮</button>
+</view>
+<view class="slider">
+  <swiper class='slider-items' indicator-dots="{{true}}"
+          indicator-color="white" interval="{{true}}">
+    <block wx:for="{{[1,2,3]}}" wx:key="*this">
+      <swiper-item>
+        <view class='slider-item item-{{index}}'></view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='{{tapFixed ? "fixed-tab":""}}'>
+  <view class='tab'>
+    <tabbar tabItems="{{tabOptions}}">
+    </tabbar>
+  </view>
+</view>
+<view class='content'></view>

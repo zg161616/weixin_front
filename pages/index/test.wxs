@@ -1,0 +1,10 @@
+function tapName(event,ownerInstance){
+  var instance = ownerInstance.selectComponent(".owner")
+  instance.setStyle({
+    "font-size":"14px"
+  })
+  instance.callMethod("test")
+}
+module.exports={
+  tapName:tapName
+}

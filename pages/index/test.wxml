@@ -1,0 +1,6 @@
+<view class='fixed-tab'>
+  <view class='tab'>
+    <tabbar tabItems="{{tabOptions}}">
+    </tabbar>
+  </view>
+</view>

@@ -14,6 +14,12 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const dateToStr = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year,month,day].map(formatNumber).join("-")
+  }
 const formatHour = time =>{
   var time = time / 1000;
   var hour = Math.floor(time/(60*60))+"时";
@@ -21,9 +27,14 @@ const formatHour = time =>{
   var seconds = Math.floor(time%60)+"秒";
   return [hour,minutes,seconds].join("")
 }
+const test =(a,b,c)=>{
+  console.log("test")
+}
 
 module.exports = {
+  test:test,
   formatTime: formatTime,
   formatNumber:formatNumber,
-  formatHour: formatHour
+  formatHour: formatHour,
+  dateToStr : dateToStr
 }

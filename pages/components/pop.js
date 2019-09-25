@@ -57,7 +57,7 @@ Component({
     */
     _error() {
       //触发取消回调
-      this.triggerEvent("error")
+      this.triggerEvent("error","error")
     },
     _success() {
       //触发成功回调
